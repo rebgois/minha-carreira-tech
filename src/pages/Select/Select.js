@@ -1,6 +1,15 @@
-import React, { useState } from "react";
+import * as React from "react";
+import { Row, Col } from "react-bootstrap";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import "./Select.css";
 
+// Dados das linguagens de programação
 const linguagens = [
   { id: 1, nome: "JavaScript" },
   { id: 2, nome: "Python" },
@@ -13,39 +22,64 @@ const linguagens = [
   { id: 9, nome: "Rust" },
   { id: 10, nome: "Kotlin" },
   { id: 11, nome: "TypeScript" },
-  { id: 12, nome: "Scala" },
+  { id: 12, nome: "Dart" },
 ];
 
-const Select = () => {
-  const [selectedLinguagem, setSelectedLinguagem] = useState("");
+export default function BasicSelect() {
+  const [selectedLanguage, setSelectedLanguage] = React.useState("");
   const navigate = useNavigate();
 
-  const handleSelectChange = (e) => {
-    setSelectedLinguagem(e.target.value);
+  const handleChange = (event) => {
+    setSelectedLanguage(event.target.value);
   };
 
   const handleNavigate = () => {
-    if (selectedLinguagem) {
-      navigate(`/info/${selectedLinguagem}`);
+    if (selectedLanguage) {
+      const selected = linguagens.find(
+        (lang) => lang.nome === selectedLanguage
+      );
+      if (selected) {
+        navigate(`/info/${selected.id}`);
+      }
     }
   };
 
   return (
-    <div>
-      <h1>Selecione uma linguagem de programação</h1>
-      <select value={selectedLinguagem} onChange={handleSelectChange}>
-        <option value="">-- Escolha uma linguagem --</option>
-        {linguagens.map((linguagem) => (
-          <option key={linguagem.id} value={linguagem.id}>
-            {linguagem.nome}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleNavigate} disabled={!selectedLinguagem}>
-        Ver Informações
-      </button>
-    </div>
+    <Row className="container">
+      <Row className="box-select">
+        <Box sx={{ minWidth: 400 }}>
+          <FormControl fullWidth style={{ color: "white" }}>
+            <Select
+              style={{
+                color: "white",
+                border: "1px solid white",
+                borderRadius: "25px",
+              }}
+              id="demo-simple-select"
+              value={selectedLanguage}
+              onChange={handleChange}
+              label="selecione"
+              displayEmpty
+              >
+                <MenuItem value="" disabled>
+                  Selecione uma linguagem
+                </MenuItem>
+              {linguagens.map((lang) => (
+                <MenuItem key={lang.id} value={lang.nome}>
+                  {lang.nome}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+        <Button
+          variant="contained"
+          onClick={handleNavigate}
+          style={{ marginTop: "25px", color: "white", backgroundColor: "grey" }}
+        >
+          Ir para Informações
+        </Button>
+      </Row>
+    </Row>
   );
-};
-
-export default Select;
+}

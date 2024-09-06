@@ -1,0 +1,54 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100vh;
+    justify-content: center;
+}
+.box-select{
+    color: white !important;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #323232;
+    height: 50vh;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    box-shadow: 5% black;
+}
+
+.css-99wn1p-MuiList-root-MuiMenu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    outline: 0;
+    color: white;
+    background-color: #323232;
+}
+
+.css-99wn1p-MuiList-root-MuiMenu-list :hover {
+    background-color: #545454;
+}
+
+.css-1h4bzp1-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
+    background-color: rgba(133, 133, 133, 0.08);
+}
+
+.css-1h4bzp1-MuiButtonBase-root-MuiMenuItem-root:hover {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    background-color: #515151 !important;
+}
+
+.css-142372x-MuiButtonBase-root-MuiButton-root {
+     --variant-textColor: none !important; 
+     --variant-outlinedColor: none !important;
+     --variant-outlinedBorder: none !important;
+}

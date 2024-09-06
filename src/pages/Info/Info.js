@@ -5,7 +5,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
-
+import { Col, Row } from 'react-bootstrap'
 
 import { Modal, Box } from "@mui/material";
 
@@ -271,12 +271,12 @@ const Info = () => {
     const navigate = useNavigate(); // Hook para navegação
   
     return (
-      <div>
+      <div style={{marginInline: '10%',marginTop: '5%'}}>
         <h1>{linguagem.nome}</h1>
         <div dangerouslySetInnerHTML={{ __html: linguagem.descricao }} />
   
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Accordion style={{backgroundColor: '#323232', borderRadius: '25px', color: 'white', margin: '1%'}}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon style={{color: 'white'}}/>}>
             <h3>Por que aprender {linguagem.nome}?</h3>
           </AccordionSummary>
           <AccordionDetails>
@@ -285,14 +285,16 @@ const Info = () => {
         </Accordion>
   
         {/* Botão de voltar */}
-        <Button
+       <Row style={{display: 'flex', justifyContent: 'center', margin: '1%'}}>
+       <Button
           variant="contained"
           color="primary"
           onClick={() => navigate('/')} // Redireciona para a página de seleção
-          style={{ marginTop: '20px' }}
+          style={{ marginTop: "25px", color: "white", backgroundColor: "#323232", borderRadius: '25px' }}
         >
           Voltar para a Seleção
         </Button>
+       </Row>
       </div>
     );
   };
